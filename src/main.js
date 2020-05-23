@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'
 import VuePageTransition from 'vue-page-transition'
 
-import router from './router/index'
+import router from './router/administrator'
 
 router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)

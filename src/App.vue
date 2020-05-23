@@ -7,59 +7,10 @@
     >
       <v-list dense>
         <template v-for="item in items">
-          <v-row
-            v-if="item.heading"
-            :key="item.heading"
-            align="center"
-          >
-            <v-col cols="6">
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-col>
-            <v-col
-              cols="6"
-              class="text-center"
-            >
-              <a
-                href="#!"
-                class="body-2 black--text"
-              >EDIT</a>
-            </v-col>
-          </v-row>
-          <v-list-group
-            v-else-if="item.children"
-            :key="item.text"
-            v-model="item.model"
-            :prepend-icon="item.model ? item.icon : item['icon-alt']"
-            append-icon=""
-          >
-            <template v-slot:activator>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ item.text }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </template>
-            <v-list-item
-              v-for="(child, i) in item.children"
-              :key="i"
-              link
-            >
-              <v-list-item-action v-if="child.icon">
-                <v-icon>{{ child.icon }}</v-icon>
-              </v-list-item-action>
-              <v-list-item-content>
-                <v-list-item-title>
-                  {{ child.text }}
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
           <v-list-item
-            v-else
             :key="item.text"
             link
+            @click="$router.push({ path: `${ item.link }` }).catch(err => {})"
           >
             <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
@@ -95,6 +46,12 @@
         <v-icon title="Sair da sessão">mdi-logout-variant</v-icon>
       </v-btn>
     </v-app-bar>
+    
+    <v-content>
+      <vue-page-transition name="zoom">
+        <router-view />
+      </vue-page-transition>
+    </v-content>
   </v-app>
 </template>
 
@@ -109,11 +66,12 @@ export default {
     dialog: false,
     drawer: null,
     items: [
-      { icon: 'mdi-image-album', text: 'Álbums' },
-      { icon: 'mdi-contacts', text: 'Contatos' },
-      { icon: 'mdi-image', text: 'Fotos' },
-      { icon: 'mdi-cash-multiple', text: 'Orçamentos' },
-      { icon: 'mdi-book-open-page-variant', text: 'Páginas' }
+      { icon: 'mdi-home-variant', text: 'Início', link: '/administracao' },
+      { icon: 'mdi-image-album', text: 'Álbums', link: '/administracao/albums' },
+      { icon: 'mdi-contacts', text: 'Contatos', link: '/administracao/contatos' },
+      { icon: 'mdi-image', text: 'Fotos', link: '/administracao/fotos' },
+      { icon: 'mdi-cash-multiple', text: 'Orçamentos', link: '/administracao/orcamentos' },
+      { icon: 'mdi-book-open-page-variant', text: 'Páginas', link: '/administracao/paginas' }
     ],
   }),
 };
