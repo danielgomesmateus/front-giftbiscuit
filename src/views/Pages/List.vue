@@ -158,6 +158,9 @@
         }
         this.close()
       },
+      setLayout(layout) {
+        this.$store.commit('SET_LAYOUT', layout)
+      }
     },
     created() {
       axios
@@ -169,6 +172,10 @@
         .catch(e => {
           console.error(e.message)
         })      
+    },
+    beforeMount() {
+      let layout = 'app-layout'
+      this.setLayout(layout)
     }
   }
 </script>

@@ -9,5 +9,17 @@ export default new Vuex.Store({
   modules: {
     page
   },
-  state: {}
+  state: {
+    layout: 'app-layout'
+  },
+  mutations: {
+    SET_LAYOUT(state, layout) {
+      state.layout = layout
+    }
+  },
+  getters: {
+    layout: state => {
+      return state.layout
+    }
+  }
 })
