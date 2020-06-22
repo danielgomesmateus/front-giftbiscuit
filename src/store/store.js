@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import * as user from './modules/user'
 import * as page from './modules/page'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    user,
     page
   },
   state: {

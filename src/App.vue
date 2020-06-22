@@ -5,18 +5,19 @@
 </template>
 
 <script>
-  import AppLayout from './layouts/AppLayout'
-  import SimpleLayout from './layouts/SimpleLayout'
+  import App from './components/Layouts/App'
+  import Simple from './components/Layouts/Simple'
+
+  import { mapGetters } from 'vuex'
 
   export default {
+    name: 'App',
     computed: {
-      layout () {
-        return this.$store.getters.layout
-      }
+      ...mapGetters(['layout'])
     },
     components: {
-      'app-layout': AppLayout,
-      'simple-layout': SimpleLayout
+      'app-layout': App,
+      'simple-layout': Simple
     }
   }
 </script>

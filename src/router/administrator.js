@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Administrators from '../views/Administrators/Home'
 import AdministratorsLogin from '../views/Administrators/Login'
 
-import PageList from '../views/Pages/List'
+import PageList from '../views/Administrators/Pages/List'
 
 Vue.use(VueRouter)
 
@@ -12,7 +12,7 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/administracao-login',
+      path: '/login',
       component: AdministratorsLogin
     },
     { 
